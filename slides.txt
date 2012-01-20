@@ -1,0 +1,312 @@
+Sub::Sampling Sub::Space
+========================
+:author:    Brad Bowman <sub@bereft.net>
+:backend:   slidy
+:revdate:   2010-11-25
+:max-width: 45em
+:duration:  25
+:data-uri:
+:encoding:  UTF-8
+
+== Sub::Sampling Sub::Space
+
+image::images/virtual-colonoscopy.png["",align="center"]
+
+== Sub::Sampling Sub::Space
+
+== Modules ==
+
+Sub::Timekeeper - calls a function with a stopwatch
+
+Sub::Versive - Subroutine pre- and post-handlers
+Sub::WrapPackages - add pre- and post-execution wrappers around all
+ the subroutines in packages or around individual subs
+Sub::Uplevel - apparently run a function in a higher stack frame
+  The main reason I wrote this module is so I could write wrappers
+  around functions and they wouldn't be aware they've been wrapped.
+Sub::Alias
+Sub::Regex - Creating Synonymous Subroutines
+  Filter::Simple; AUTOLOAD
+  sub /look(s|ing)?_for/ ($){
+     foobar blah blah
+  }
+Sub::Assert
+Sub::Attempts -
+Sub::Retry - retry $n times
+Sub::Attribute
+Sub::Auto
+Sub::Delete - Perl module enabling one to delete subroutines
+Sub::Documentation - Collect documentation for subroutines
+Sub::Filter - automatically filter function's return value
+Sub::Fork - Running subroutines in forked process
+Sub::Frequency - Run code blocks according to a given probability
+Sub::Go - DWIM sub blocks for smart matching
+Sub::Assert - Subroutine pre- and postconditions, etc.
+Sub::Auto - declare individual handlers for AUTLOADed subs,
+respecting can and inheritance
+Sub::Become - Syntactic sugar to allow a sub to replace itself
+Sub::StopCalls - stop sub calls (make it a constant)
+Sub::Defer - defer generation of subroutines until they are first called
+Sub::Called - get information about how the subroutine is called
+Sub::Caller - Add caller information to the end of @_.
+Sub::Clean - Clean subroutines with an attribute
+  (namespace::autoclean)
+Sub::Clone - Clone subroutine refs for garbage collection/blessing
+purposes
+  pure perl vs XS
+
+Sub::StrictDecl - detect undeclared subroutines in compilation
+
+Sub::Installer - A cleaner way to install (or reinstall) package subroutines
+Sub::Install - install subroutines into packages easily
+  This module is (obviously) a reaction to Damian Conway's
+  Sub::Installer, which does the same thing, but does it by getting
+  its greasy fingers all over UNIVERSAL. I was really happy about the
+  idea of making the installation of coderefs less ugly, but I
+  couldn't bring myself to replace the ugliness of typeglobs and
+  loosened strictures with the ugliness of UNIVERSAL methods.
+Sub::Exporter - a sophisticated exporter for custom-built routines
+Sub::Exporter::ForMethods - helper routines for using Sub::Exporter to build methods
+Sub::Import - import routines from most anything using Sub::Exporter
+Sub::Exporter::GlobExporter
+export shared globs with Sub::Exporter collectors 
+Sub::Exporter::Lexical
+to export lexically-available subs with Sub::Exporter 
+Sub::Exporter::Util
+utilities to make Sub::Exporter easier
+Sub::Exporter::Simple - just export some subs
+ This is free software, licensed under:
+  DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004
+
+Sub::Override - Perl extension for easily overriding subroutines
+  Test Mocking
+
+Sub::Parameters - enhanced parmeter handling
+  attributes to declare param unpacking
+
+Sub::Prepend - Prepend code to named subroutines
+  Hook::WrapSub Hook::PrePostCall Hook::LexWrap
+
+Sub::Private - Private subroutines and methods
+ Attribute::Handlers; namespace::clean (); B::Hooks::EndOfScope;
+
+Sub::Prototype - Set a subs prototype
+
+Sub::Quote - efficient generation of subroutines via string eval
+  quote_sub 'Silly::kitty', q{ print "meow" };
+  some part of Moo
+
+Sub::Quotelike - Allow to define quotelike functions (q qq)
+Sub::Recursive - Anonymous memory leak free recursive subroutines
+  recursive { $REC->() }
+Sub::Call::Recur - Self recursive tail call invocation (recur of Clojure)
+  constant stack space
+Sub::Call::Tail - Tail calls for subroutines and methods (tail like goto)
+  B::Hooks::OP::Check::EntersubForCV;
+
+
+Sub::Current -
+Sub::Contract - Pragmatic contract programming for Perl
+Sub::Context - Perl extension to dispatch subroutines based on their
+calling context (wantarry dispatch)
+Sub::Chain - Chain subs together and call in succession
+  I then found and considered Sub::Pipeline but needed to be able to
+  use the same named subroutine with different arguments in a single
+  chain, so it seemed easier to me to stick with the code I had
+  written and just rename it and abstract it a bit further.
+Sub::Pipe - chain subs with | (pipe)
+Sub::Pipeline - subs composed of sequential pieces
+Sub::Curry - Create curried subroutines
+Sub::Curried - automatically curried subroutines
+  Sub::Composable - << composing syntax
+Sub::DeferredPartial - Deferred evaluation / partial application.
+  overloads operators to defer also
+Sub::Lambda - syntactic sugar for lambdas in Perl (fn ap)
+  q{ code }
+  03BB λ GREEK SMALL LETTER LAMDA
+  perl -Mutf8 -C -E 'sub λ { say "in λ" }; λ()'
+  in λ
+Sub::Lambda::Filter - experimental source filtering to compile lambdas
+  (\a -> \b -> { $a + $b });
+Sub::Lexical - implements lexically scoped subroutines
+  my sub this { .. } # with source filters
+
+
+Sub::Mage - Override, restore subroutines and add hook modifiers,
+with much more sugary goodness.
+  now Goose (but most wouldi just use Moose)
+
+Sub::MicroSig - microsigs for microvalidation of sub arguments
+  :Sig() Params::Validate::Micro
+
+Sub::Methodical - call methods as functions (and auto grab $self)
+  use B;
+  use PadWalker;
+  use Filter::EOF;
+  use Sub::Install ();
+  use Sub::Exporter
+
+Sub::Multi - Data::Bind-based multi-sub dispatch (Perl 6 ish)
+  Data::Bind - Bind and alias variables
+Sub::SmartMatch - Use smart matching to define multi subs
+Sub::PatMat - call a version of subroutine depending on its arguments
+  more dynamic based on : when( cond )
+  B B::Utils qw/walkoptree_filtered opgrep/
+Sub::PatternMatching - Functional languages' Pattern Matching
+
+
+Sub::Name - (re)name a sub (subname)
+  used in Moose and other code generators
+  mro uses this info for dispatch
+
+Sub::Mutate - examination and modification of subroutines
+        use Sub::Mutate qw(
+                sub_body_type
+                sub_closure_role
+                sub_is_lvalue
+                sub_is_constant
+                sub_is_method mutate_sub_is_method
+                sub_is_debuggable mutate_sub_is_debuggable
+                sub_prototype mutate_sub_prototype
+        );
+
+
+Sub::Compose - like chain but without call overhead
+Sub::Current - Get the current subroutine ROUTINE()
+
+Sub::Identify - Retrieve names of code references (sub_name..)
+  B:: for introspection
+Sub::Information - Get subroutine information
+  variables PadWalker
+  code Data::Dump::Streamer::Dump
+  line file B
+Sub::ScopeFinalizer - execute a code on exiting scope
+  B::EndOfScope compile time
+  Scope::Guard
+Sub::Signatures - Use proper signatures for subroutines, including dispatching.
+  Filter::Simple;
+
+Sub::Slice - split long-running tasks into manageable chunks
+Sub::Timebound - Perl extension for timebound computations - timeboundretry
+Sub::Throttle - Throttle load of perl functions by calling sleep
+Sub::Timekeeper - calls a function with a stopwatch
+Sub::ArgShortcut - simplify writing functions that use default arguments
+  
+
+Sub::NamedParams - Perl extension for using named arguments with any sub
+
+Sub::Spy - Sub::Spy is subref wrapper that records arguments, return
+value, and exception thrown.
+
+Sub::Nary - Try to count how many elements a subroutine can return
+in list context.
+  *return* number
+  WHAT!
+
+Sub::Op - Install subroutines as opcodes.
+  it gets rid of the overhead of a normal subroutine call ;
+  there's no symbol table entry defined for the subroutine.
+
+
+mro and subname
+
+http://cpansearch.perl.org/src/GAAS/illguts-0.09/index.html#cv
+
+http://cpansearch.perl.org/src/GAAS/illguts-0.09/op.html
+
+== Timeline ==
+
+== Sub::Curried - automatically curried subroutines
+
+Sub::Curried - automatically curried subroutines
+  Sub::Composable - << composing syntax
+
+There are several modules on CPAN that already do currying or
+partial evaluation:
+
+    Perl6::Currying - Filter based module prototyping the Perl 6
+system
+    Sub::Curry - seems rather complex, with concepts like blackholes
+and antispices. Odd.
+    AutoCurry - creates a currying variant of all existing subs
+automatically. Very odd.
+    Sub::DeferredPartial - partial evaluation with named arguments
+(as hash keys). Has some great debugging hooks (the function is a
+blessed object which displays what the current bound keys are).
+    Attribute::Curried - exactly what we want minus the sugar. (The
+attribute has to declare how many arguments it's expecting)
+
+== Sub::Compose
+
+METHODOLOGY ^
+
+Currently, this uses Data::Dump::Streamer to deparse the subroutines
+along with their lexical environments and then intelligently
+concatenates the output to form a single subroutine. As such, it has
+all issues that DDS has in terms of parsing coderefs. Please refer
+to that documentation for more details.
+
+I am working on revamping this so that I manipulate the opcodes
+directly vs. deparsing. This should have increased performance and,
+hopefully, will reduce the likelihood of any edge cases. As this is
+my first foray into the world of perlguts, we'll see how it goes.
+:-)
+
+== AUTHORS ==
+
+Curtis "Ovid" Poe
+Ricardo SIGNES
+Damian Conway
+Andrew Main (Zefram)
+יובל קוג'מן (Yuval Kogman)
+Chia-liang Kao (高嘉良)
+Florian Ragwitz
+Vincent Pit
+Matthijs van Duin <xmath@cpan.org>
+Αριστοτέλης Παγκαλτζής Aristotle Pagaltzis
+Richard Clamp
+Dan Kogai
+David Golden
+Simon Cozens
+Dave Cross
+David Cantrell
+Johan Lodin
+MATSUNO★Tokuhiro
+
+== Perl5 Colon ==
+
+[source,perl]
+-----------------------------------------------------
+ ($test) ? $then : $else; # C-like
+ LABEL: goto LABEL;       # C-like
+
+ next LABEL, last LABEL, redo LABEL ; # TIMTOWDI
+
+ Package::Separator;      # C++ like
+
+ /(?:.*)/                 # Regex (?: ) group w/o capture
+ /[[:punct:]]/            # POSIX char class
+ use mod :tag;            # Import group convention
+
+ sub x : magic("yes") { } # sub/var attributes
+-----------------------------------------------------
+
+== Unusned Sub::Names ==
+
+Sub::Sequence
+Sub::Standard
+Sub::Stance
+Sub::Traction
+Sub::Stitute
+Sub::Secton (Sub::Slice)
+
+
+== End ==
+
+Brad Bowman
+
+URL: https://github.com/bowman/subspace-talk
+
+Tiny URL: http://tinyurl.com/subspace-talk
+
+// vim:tw=68:ts=2:sts=2:sw=2:syntax=asciidoc:
