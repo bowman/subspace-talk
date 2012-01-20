@@ -30,6 +30,7 @@ Sub::Regex - Creating Synonymous Subroutines
   sub /look(s|ing)?_for/ ($){
      foobar blah blah
   }
+Symbol::Approx::Sub - Perl module for calling subroutines by approximate names!
 Sub::Assert
 Sub::Attempts -
 Sub::Retry - retry $n times
@@ -207,6 +208,12 @@ Sub::Op - Install subroutines as opcodes.
   it gets rid of the overhead of a normal subroutine call ;
   there's no symbol table entry defined for the subroutine.
 
+subs - Perl pragma to predeclare sub names
+subs::auto - Read barewords as subroutine names.
+  B; B::Keywords; Variable::Magic
+subs::parallel - enables subroutines to seamlessly run in parallel
+
+
 
 mro and subname
 
@@ -298,8 +305,24 @@ Sub::Standard
 Sub::Stance
 Sub::Traction
 Sub::Stitute
-Sub::Secton (Sub::Slice)
-
+Sub::Section (Sub::Slice)
+Sub::Query
+Sub::Routine
+Sub::Script
+Sub::Scribe
+Sub::Ject
+Sub::Class
+Sub::Mit
+Sub::Mission
+Sub::Title
+Sub::Way
+Sub::Marine
+Sub::String
+Sub::Commandante
+Sub::Lime
+Sub::Liminal
+Sub::Junctive
+Sub::Directory
 
 == End ==
 
