@@ -1,0 +1,24 @@
+Battery charged
+Snv started
+
+aa
+firefox slides.html
+git ci -a
+
+
+cp slides.* subspace-talk
+(cd subspace-talk && git checkout master && \
+  git ci -a && git push origin master)
+
+(cd subspace-talk && git checkout gh-pages && \
+  cp ../slides.html index.html && \
+  git ci -a && git push origin gh-pages ; \
+  git checkout master)
+
+scp slides.* xango:subspace
+cp slides.* /media/E0FD-1813/subspace/
+
+http://bowman.github.com/subspace-talk/
+https://github.com/bowman/subspace-talk/
+file:///home/bsb/talks/subspace/slides.html
+/home/bsb/talks/subspace/slides.pdf

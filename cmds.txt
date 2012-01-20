@@ -1,0 +1,20 @@
+ chromium-browser --app='http://www.w3.org/Talks/Tools/Slidy2/#(2)' --class=my-slides
+asciidoc --help syntax
+a2x -f pdf slidy-ex.txt 
+acroread slidy-ex.pdf
+~/wkhtml/wkhtmltopdf-amd64 -O Portrait -s A5 slidy.html slidy.pdf
+./asciidoc-8.6.3/asciidoc.py --backend slidy slidy-ex.txt
+ chromium-browser --app="file://$PWD/slides.html" --class=my-slides
+
+pdfcrop --resolution 1024x768 output.pdf output-crop.pdf
+pdfcrop  --margins 10 --noclip --resolution 1024x768 output.pdf output-crop.pdf
+impressive -g 1024x768 ff2.pdf
+
+bsbtext? -> asciidoc -> slidy -> firefox pdf -> impressive
+     |                    \-> chrome --app
+      \-> vroom/spork -> ...
+
+# rotate content (landscape?)
+    pdftk in.pdf cat 1-endS output out.pdf
+
+for f in *.*; do echo mogrify -resize '320x320\>' $f ; done
