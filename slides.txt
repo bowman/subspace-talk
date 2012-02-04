@@ -417,11 +417,19 @@ include::snippets/xpvcv.h[]
             sub_closure_role
             sub_is_lvalue
             sub_is_constant
-            sub_is_method mutate_sub_is_method
-            sub_is_debuggable mutate_sub_is_debuggable
-            sub_prototype mutate_sub_prototype
+            sub_is_method
+            mutate_sub_is_method
+            sub_is_debuggable
+            mutate_sub_is_debuggable
+            sub_prototype
+            mutate_sub_prototype
     );
 -----------------------------------------------------
+
+This module contains functions that examine and modify many aspects
+of subroutines in Perl.  It is intended to help in the
+implementation of attribute handlers, and for other such special
+effects.
 
 == Sub Internals - Sub::Clone
 
@@ -433,15 +441,8 @@ collect until global destruction:
 
 [source,perl]
 -----------------------------------------------------
-  use Sub::Clone;
-  sub get_callback { return sub { "hi!" }; }
-
-  my $first = get_callback();
-  my $second = get_callback();
-  my $third = clone_sub $second;
-
-  warn "$first == $second"; # prints the same refaddr
-  warn "$third != $second"; # prints the diff refaddr
+include::snippets/sub-clone.pl[]
+sys::[perl snippets/sub-clone.pl]
 -----------------------------------------------------
 
 * Pure Perl - HDTDT: sub { goto &$original }
