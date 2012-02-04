@@ -31,28 +31,19 @@ coders consider possible.
 
 == AUTHORS - CPAN Rock-stars and Rising-stars
 
- * Damian Conway
- * Ricardo SIGNES
- * Curtis "Ovid" Poe
- * Andrew Main (Zefram)
- * יובל קוג'מן (Yuval Kogman / nothingmuch)
- * Chia-liang Kao (高嘉良)
- * Florian Ragwitz
- * Vincent Pit
- * Matthijs van Duin <xmath@cpan.org>
- * Αριστοτέλης Παγκαλτζής Aristotle Pagaltzis
- * Richard Clamp
- * Dan Kogai
- * David Golden
- * Simon Cozens
- * Dave Cross
- * David Cantrell
- * Shawn M Moore
- * Johan Lodin
- * MATSUNO★Tokuhiro
- * Steven Haryanto
- * Marcel Gruenauer
- * Kang-min Liu "gugod"
+|=================================================
+| Damian Conway       | Andrew Main (Zefram)
+| Ricardo SIGNES      | Chia-liang Kao (高嘉良)
+| Curtis "Ovid" Poe   | Matthijs van Duin <xmath@cpan.org>
+| יובל קוג'מן Yuval Kogman | Αριστοτέλης Παγκαλτζής Aristotle Pagaltzis
+| Florian Ragwitz     | David Cantrell
+| Vincent Pit         | Shawn M Moore
+| Richard Clamp       | Johan Lodin
+| Dan Kogai           | MATSUNO★Tokuhiro
+| David Golden        | Steven Haryanto
+| Simon Cozens        | Marcel Gruenauer
+| Dave Cross          | Kang-min Liu "gugod"
+|=================================================
 
 == Sub:: Makes for Fun Names
 
@@ -134,7 +125,7 @@ Sub::Exporter - a sophisticated exporter for custom-built routines
 
 [source,perl]
 -----------------------------------------------------
-XXX
+XXX XXX
 -----------------------------------------------------
 
 Used within Moose quite a bit.
