@@ -2,7 +2,7 @@ Sub::Sampling Sub::Space
 ========================
 :author:    Brad Bowman <sub@bereft.net>
 :backend:   slidy
-:revdate:   2010-11-25
+:revdate:   2012-02-01
 :max-width: 45em
 :duration:  25
 :data-uri:
@@ -61,7 +61,7 @@ My current favourites are:
   * Sub::Versive
   * Sub::Frequency
 
-But these so much scope to improve.
+But there's so much scope to improve.
 
 footnote:[As the author of Devel::file, I clearly enjoy name games]
 
@@ -188,34 +188,30 @@ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004 ]
 * *Sub::Fork* - Running subroutines in forked process
 * *subs::parallel* - enables subroutines to seamlessly run in parallel
 
-== Laziness and Memoizing
+== Laziness, Memoizing and Retry
 
-Sub::Become - Syntactic sugar to allow a sub to replace itself
-Sub::StopCalls - stop sub calls (make it a constant)
-Sub::Defer - defer generation of subroutines until they are first called
+* *Sub::Become* - Syntactic sugar to allow a sub to replace itself
+* *Sub::StopCalls* - stop sub calls (make it a constant)
+* *Sub::Defer* - defer generation of subroutines until they are first called
 
+* *Sub::Attempts* - alter subroutines to try again on exceptions
+* *Sub::Retry* - retry $n times
+* *Sub::Frequency* - Run code blocks according to a given probability
 
-
-Sub::Attempts - alter subroutines to try again on exceptions
-Sub::Retry - retry $n times
-Sub::Frequency - Run code blocks according to a given probability
-
-Sub::Documentation - Collect documentation for subroutines
+* *Sub::Documentation* - Collect documentation for subroutines
 
 
-== Access, Streamline and Modify Subs
+== Tweak Subs Properties
 
+* *Sub::Prototype* - Set a subs prototype: set_prototype($code, '&@')
 * *Sub::Attribute* - Reliable subroutine attribute handlers
-* *Sub::Go* - DWIM subs for smart matching: [1,2] ~~ go { say $_}
 * *Sub::StrictDecl* - detect undeclared subroutines in compilation
 * *subs* - Perl pragma to predeclare sub names
 * *subs::auto* - Read barewords as subroutine names.
   footnote:[HDTDT: B; B::Keywords; Variable::Magic]
-* *Sub::Prototype* - Set a subs prototype: set_prototype($code, '&@')
 * *Sub::Caller* - Add caller information to the end of @_.
 * *Sub::Called* - get information about how the subroutine is called
   already_called, not_called, called_with_ampersand
-
 
 == Private Subs
 
@@ -239,8 +235,6 @@ footnote:[HDTDT: Attribute::Handlers; namespace::clean;
 B::Hooks::EndOfScope]
 
 
-
-
 == Param Handling, Signatures
 
 * *Sub::Signatures* - Use proper signatures for subroutines, including dispatching.
@@ -248,7 +242,7 @@ B::Hooks::EndOfScope]
 * *Sub::Parameters* - enhanced parmeter handling
   attributes to declare param unpacking
 * *Sub::ArgShortcut* - simplify writing functions that use default arguments
-* *Sub::NamedParams* - Perl extension for using named arguments with any sub
+* *Sub::NamedParams* - use named arguments with any sub
 * *Sub::MicroSig* - microsigs for microvalidation of sub arguments
   :Sig() Params::Validate::Micro
 * *Sub::Methodical* - call methods as functions (and auto grab $self)
@@ -279,6 +273,8 @@ __________________________________________________________
 footnote:[HDTDT: use overload '<<' => \&compose;]
 * *Sub::Compose* - like chain but without call overhead
 
+/Higher-Order Perl/ has lazy chains.
+
 == Pipeline, Chaining, Composing - Sub::Compose HDTDT
 
 === Sub::Compose
@@ -297,58 +293,123 @@ hopefully, will reduce the likelihood of any edge cases. As this is
 my first foray into the world of perlguts, we'll see how it goes.
 :-)
 
-== Currying, Parameter Binding
+== Currying, Parameter Binding, Lambda
 
-Sub::Curry - Create curried subroutines
-Sub::Curried - automatically curried subroutines
-Sub::DeferredPartial - Deferred evaluation / partial application.
-  overloads operators to defer also
-Sub::Lambda - syntactic sugar for lambdas in Perl (fn ap)
-  q{ code }
-  03BB λ GREEK SMALL LETTER LAMDA
+* *Sub::Curry* - Create curried subroutines
+    seems complex, with concepts like blackholes and antispices
+* *Sub::Curried* - automatically curried subroutines
+* *Sub::DeferredPartial* - Deferred evaluation / partial application.
+  overloads operators to defer also, nice debug stringify
+* *Sub::Lambda* - syntactic sugar for lambdas in Perl (fn ap)
+* *Sub::Lambda::Filter* - experimental source filtering to compile lambdas
+
+[source,perl]
+-----------------------------------------------------
+  *flip  = fn f => fn a => fn b => ap qw{f b a};
+  my $Y  = fn m => ap(
+          (fn f => ap m => fn a => ap f => f => a => ()) =>
+          (fn f => ap m => fn a => ap f => f => a => ())
+         );
+  (\a -> \b -> { $a + $b }); # S::L::Filter
   perl -Mutf8 -C -E 'sub λ { say "in λ" }; λ()'
   in λ
-Sub::Lambda::Filter - experimental source filtering to compile lambdas
-  (\a -> \b -> { $a + $b });
+-----------------------------------------------------
 
+Also out there *Perl6::Currying*, *AutoCurry*, *Attribute::Curried*
 
 == Dispatch, Multi-methods
 
-Sub::Multi - Data::Bind-based multi-sub dispatch (Perl 6 ish)
-  Data::Bind - Bind and alias variables
-Sub::SmartMatch - Use smart matching to define multi subs
-Sub::PatMat - call a version of subroutine depending on its arguments
+* *Sub::Multi* - Data::Bind-based multi-sub dispatch (Perl 6 ish)
+  *Data::Bind* - Bind and alias variables
+* *Sub::SmartMatch* - Use smart matching to define multi subs
+* *Sub::PatMat* - call a version of subroutine depending on its arguments
   more dynamic based on : when( cond )
-  B B::Utils qw/walkoptree_filtered opgrep/
-Sub::PatternMatching - Functional languages' Pattern Matching
-Sub::Context - Perl extension to dispatch subroutines based on their
-calling context (wantarry dispatch)
+  footnote:[HDTDT: B B::Utils qw/walkoptree_filtered opgrep/]
+* *Sub::PatternMatching* - Functional languages' Pattern Matching
+* *Sub::Context* - Perl extension to dispatch subroutines based on their
+   calling context (wantarry dispatch)
+* *Sub::Go* - DWIM subs for smart matching: [1,2] ~~ go { say $_}
 
 == Sub Information - Sub::Name
 
-Sub::Name - (re)name a sub (subname)
+*Sub::Name* - (re)name a sub (subname)
   Generally used to give __ANON__ subs meaningful names
   used in Moose and other code generators
   mro uses this info for method dispatch
 
-Sub::Identify - Retrieve names of code references (sub_name..)
+*Sub::Identify* - Retrieve names of code references (sub_name..)
   footnote:[HDTDT: B for introspection]
+
+Sub::Name initially for debugging, now common in code generators.
+mro uses subname during dispatch.
 
 == Sub Information - Sub::Information
 
-Sub::Information - single interface to subroutine information
-  variables PadWalker
-  code Data::Dump::Streamer::Dump
-  line file B
+*Sub::Information* - single interface to subroutine information
+[source,perl]
+-----------------------------------------------------
+  use Sub::Information as => 'inspect';
 
-Sub::Nary - Try to count how many elements a subroutine can return
+  my $code_info = inspect(\&inspect);
+  print "$_ = ", $code_info->$_, "\n"
+    for qw(name package address blessed file
+           variables code dump);
+-----------------------------------------------------
+
+Scalar::Util, Sub::Identify, Data::Dump::Streamer, B,
+PadWalker, B::Deparse, Devel::Peek
+
+== Sub Information - Sub::Information Output
+
+-----------------------------------------------------
+name = inspect
+package = Sub::Information
+address = 20461256
+blessed = 
+file = /usr/local/share/perl/5.10.1/Sub/Information.pm
+variables = HASH(0x1416628)
+code = $CODE1=sub {
+  package Sub::Information; use warnings; use strict 'refs';
+  unless ('CODE' eq &Scalar::Util::reftype($_[0])) {
+    'Sub::Information'->_croak('Argument to
+Sub::Information::inspect() must be a code ref'); }
+  return 'Sub::Information'->new(shift @_); };
+dump = SV = RV(0x1323d98) at 0x1323d88
+  REFCNT = 1
+  FLAGS = (ROK)
+  RV = 0x13836c8
+  SV = PVCV(0x1401100) at 0x13836c8
+    REFCNT = 3
+    FLAGS = ()
+    COMP_STASH = 0x132f0d8  "Sub::Information"
+-----------------------------------------------------
+
+== Sub Information - Sub::Nary
+
+*Sub::Nary* - Try to count how many elements a subroutine can return
 in list context.
-  *return* number
-  WHAT!
+
+[source,perl]
+-----------------------------------------------------
+   use Sub::Nary; use YAML::XS;
+
+   sub x {
+    if ($ENV{one})     { return 1;     }
+    elsif (rand()<0.5) { return (1,2); }
+    else               { return @ARGV; }
+  }
+
+  print Dump(Sub::Nary->new->nary(\&x));
+  # { '1' => 0.5, '2' => 0.25, list => 0.25 }
+-----------------------------------------------------
+
+footnote:[HDTDT: voodoo]
+
+== Sub Internals
 
 == Sub Internals - Sub::Mutate
 
-Sub::Mutate - examination and modification of subroutines
+*Sub::Mutate* - examination and modification of subroutines
 
 [source,perl]
 -----------------------------------------------------
@@ -363,10 +424,18 @@ Sub::Mutate - examination and modification of subroutines
     );
 -----------------------------------------------------
 
+== Sub Internals - Sub::Clone
 
-Sub::Clone - Clone subroutine refs for garbage collection/blessing
-purposes
-  pure perl vs XS
+*Sub::Clone* - Clone subroutine refs for GC/blessing purposes
+  Pure Perl vs XS
+footnote:[HDTDT: sub { goto &$original }]
+
+*Sub::Op* - Install subroutines as opcodes.
+  it gets rid of the overhead of a normal subroutine call ;
+  there's no symbol table entry defined for the subroutine.
+
+
+
 
 Sub::Quote - efficient generation of subroutines via string eval
   quote_sub 'Silly::kitty', q{ print "meow" };
@@ -377,38 +446,6 @@ Sub::Quotelike - Allow to define quotelike functions (q qq)
 Sub::ScopeFinalizer - execute code on exiting scope
   B::EndOfScope compile time
   Scope::Guard
-
-
-Sub::Op - Install subroutines as opcodes.
-  it gets rid of the overhead of a normal subroutine call ;
-  there's no symbol table entry defined for the subroutine.
-
-
-
-
-mro and subname
-
-
-
-== Sub::Curried - automatically curried subroutines
-
-Sub::Curried - automatically curried subroutines
-  Sub::Composable - << composing syntax
-
-There are several modules on CPAN that already do currying or
-partial evaluation:
-
-    Perl6::Currying - Filter based module prototyping the Perl 6
-system
-    Sub::Curry - seems rather complex, with concepts like blackholes
-and antispices. Odd.
-    AutoCurry - creates a currying variant of all existing subs
-automatically. Very odd.
-    Sub::DeferredPartial - partial evaluation with named arguments
-(as hash keys). Has some great debugging hooks (the function is a
-blessed object which displays what the current bound keys are).
-    Attribute::Curried - exactly what we want minus the sugar. (The
-attribute has to declare how many arguments it's expecting)
 
 
 == Unused Sub::Names ==
