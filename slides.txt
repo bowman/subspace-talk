@@ -187,6 +187,8 @@ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004 ]
 * *Sub::Throttle* - Throttle load of perl functions by calling sleep
 * *Sub::Fork* - Running subroutines in forked process
 * *subs::parallel* - enables subroutines to seamlessly run in parallel
+* *Sub::ScopeFinalizer* - execute code on exiting scope
+  footnote:[HDTDT B::EndOfScope compile time Scope::Guard]
 
 == Laziness, Memoizing and Retry
 
@@ -212,6 +214,7 @@ DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004 ]
 * *Sub::Caller* - Add caller information to the end of @_.
 * *Sub::Called* - get information about how the subroutine is called
   already_called, not_called, called_with_ampersand
+* *Sub::Quotelike* - Allow to define quotelike functions (q qq)
 
 == Private Subs
 
@@ -407,6 +410,33 @@ footnote:[HDTDT: voodoo]
 
 == Sub Internals
 
+image::images/cv.png[``,align="right"]''
+[source,c]
+-----------------------------------------------------
+struct xpvcv {
+  HV*         xmg_stash;
+  union _xmgu xmg_u;
+  STRLEN      xpv_cur;
+  STRLEN      xpv_len;
+  HV *        xcv_stash;
+  union {
+    OP *      xcv_start;
+    ANY       xcv_xsubany;
+  }           xcv_start_u;
+  union {
+    OP *      xcv_root;
+    void      (*xcv_xsub) (pTHX_ CV*);
+  }           xcv_root_u;
+  GV *        xcv_gv;
+  char *      xcv_file;
+  AV *        xcv_padlist;
+  CV *        xcv_outside;
+  U32         xcv_outside_seq;
+  cv_flags_t  xcv_flags
+  I32 xcv_depth;
+};
+-----------------------------------------------------
+
 == Sub Internals - Sub::Mutate
 
 *Sub::Mutate* - examination and modification of subroutines
@@ -426,27 +456,46 @@ footnote:[HDTDT: voodoo]
 
 == Sub Internals - Sub::Clone
 
-*Sub::Clone* - Clone subroutine refs for GC/blessing purposes
-  Pure Perl vs XS
-footnote:[HDTDT: sub { goto &$original }]
+*Sub::Clone*;; Clone subroutine refs for GC/blessing purposes
 
-*Sub::Op* - Install subroutines as opcodes.
-  it gets rid of the overhead of a normal subroutine call ;
-  there's no symbol table entry defined for the subroutine.
+A surprising fact about Perl is that anonymous subroutines that do
+not close over variables are actually shared, and do not garbage
+collect until global destruction:
 
+[source,perl]
+-----------------------------------------------------
+  use Sub::Clone;
+  sub get_callback { return sub { "hi!" }; }
 
+  my $first = get_callback();
+  my $second = get_callback();
+  my $third = clone_sub $second;
 
+  warn "$first == $second"; # prints the same refaddr
+  warn "$third != $second"; # prints the diff refaddr
+-----------------------------------------------------
 
-Sub::Quote - efficient generation of subroutines via string eval
-  quote_sub 'Silly::kitty', q{ print "meow" };
-  some part of Moo
+* Pure Perl - HDTDT: sub { goto &$original }
+* XS - cv_clone, real clone for refcounting, sub_name, variables..
 
-Sub::Quotelike - Allow to define quotelike functions (q qq)
+== Sub Internals - Sub::Op
 
-Sub::ScopeFinalizer - execute code on exiting scope
-  B::EndOfScope compile time
-  Scope::Guard
+*Sub::Op*;; Install subroutines as Perl opcodes.
+footnote:[HDTDT: even greater voodoo]
 
+=== DESCRIPTION
+
+This module provides a C and Perl API for replacing subroutine calls
+by custom opcodes.  This has two main advantages :
+
+* it gets rid of the overhead of a normal subroutine call ;
+* there's no symbol table entry defined for the subroutine.
+
+Subroutine calls with and without parenthesis are handled. [..]
+
+When B and B::Deparse are loaded, they get automatically
+monkeypatched so that introspecting modules like B::Concise and
+B::Deparse still produce a valid output.
 
 == Unused Sub::Names ==
 
