@@ -478,7 +478,7 @@ B::Deparse still produce a valid output.
 |Sub::Stitute   |Sub::Way       |Sub::Liminal
 |Sub::Section   |Sub::Marine    |Sub::Junctive
 |Sub::Slice     |Sub::String    |Sub::Side
-|Sub::Query     |Sub::Born      |Sub::Commandante
+|Sub::Query     |Sub::Born      |Sub::Commandant
 |=================================================
 
 == End ==
