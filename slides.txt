@@ -390,21 +390,10 @@ in list context.
 
 [source,perl]
 -----------------------------------------------------
-   use Sub::Nary; use YAML::XS;
-
-   sub x {
-    if ($ENV{one})     { return 1;     }
-    elsif (rand()<0.5) { return (1,2); }
-    else               { return @ARGV; }
-  }
-
-  print Dump(Sub::Nary->new->nary(\&x));
-  # { '1' => 0.5, '2' => 0.25, list => 0.25 }
------------------------------------------------------
-
-[source,perl]
------------------------------------------------------
 include::snippets/sub-nary.pl[]
+-----------------------------------------------------
+-----------------------------------------------------
+sys::[perl snippets/sub-nary.pl]
 -----------------------------------------------------
 
 footnote:[HDTDT: voodoo]
@@ -414,28 +403,7 @@ footnote:[HDTDT: voodoo]
 image::images/cv.png["CV",float="right"]
 [source,c]
 -----------------------------------------------------
-struct xpvcv {
-  HV*         xmg_stash;
-  union _xmgu xmg_u;
-  STRLEN      xpv_cur;
-  STRLEN      xpv_len;
-  HV *        xcv_stash;
-  union {
-    OP *      xcv_start;
-    ANY       xcv_xsubany;
-  }           xcv_start_u;
-  union {
-    OP *      xcv_root;
-    void      (*xcv_xsub) (pTHX_ CV*);
-  }           xcv_root_u;
-  GV *        xcv_gv;
-  char *      xcv_file;
-  AV *        xcv_padlist;
-  CV *        xcv_outside;
-  U32         xcv_outside_seq;
-  cv_flags_t  xcv_flags
-  I32 xcv_depth;
-};
+include::snippets/xpvcv.h[]
 -----------------------------------------------------
 
 == Sub Internals - Sub::Mutate
