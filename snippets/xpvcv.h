@@ -4,13 +4,11 @@ struct xpvcv {
   STRLEN      xpv_cur;
   STRLEN      xpv_len;
   HV *        xcv_stash;
-  union {
-    OP *      xcv_start;
-    ANY       xcv_xsubany;
+  union { OP *  xcv_start;
+          ANY   xcv_xsubany;
   }           xcv_start_u;
-  union {
-    OP *      xcv_root;
-    void      (*xcv_xsub) (pTHX_ CV*);
+  union { OP *  xcv_root;
+          void  (*xcv_xsub) (pTHX_ CV*);
   }           xcv_root_u;
   GV *        xcv_gv;
   char *      xcv_file;
