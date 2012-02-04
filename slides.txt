@@ -29,7 +29,7 @@ This leads to techniques that go beyond ordinary data manipulation.
 Extending the possibilities for code handling extends what
 coders consider possible.
 
-== AUTHORS - CPAN Rock-stars and Rising-stars
+== AUTHORS - Rock-stars and Rising-stars
 
 |=================================================
 | Damian Conway       | Andrew Main (Zefram)
