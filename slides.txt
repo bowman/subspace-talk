@@ -475,7 +475,8 @@ B::Deparse still produce a valid output.
 
 Brad Bowman
 
-URL: https://github.com/bowman/subspace-talk
+Source: https://github.com/bowman/subspace-talk +
+Presentation: http://bowman.github.com/subspace-talk
 
 Tiny URL: http://tinyurl.com/subspace-talk
 
