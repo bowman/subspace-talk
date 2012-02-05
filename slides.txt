@@ -10,24 +10,28 @@ Sub::Sampling Sub::Space
 
 == Sub::Sampling Sub::Space
 
-Sub::Sampling Sub::Space aren't modules,
-they're just the talk's title.
+*Sub::Sampling* *Sub::Space*;;
+  These aren't modules, they're just the talk's title.
 
-Sub::* is an interesting namespace.
+* Sub::* is an interesting namespace.
+* 153 Registered in CPAN, many more unregistered.
+* This talk is a tour of some of the curious bits.
+* I'll quickly cover some broad themes and then look at some
+  of the more interesting ones in greater detail.
 
-This talk is a tour of some of the curious bits.
+HDTDT;; "How do they do that?"
 
 == Why Sub:: in Particular?
 
-My initial scan had a purpose, but there were a lot
-of diversions to enjoy.
+* My initial scan had a purpose, but there were a lot
+  of diversions to enjoy.
 
-Manipulating subroutines and code is a higher-order activity.
+* Manipulating subroutines and code is a higher-order activity.
 
-This leads to techniques that go beyond ordinary data manipulation.
+* This leads to techniques that go beyond ordinary data manipulation.
 
-Extending the possibilities for code handling extends what
-coders consider possible.
+* Extending the possibilities for code handling extends what
+  coders consider possible.
 
 == AUTHORS - Rock-stars and Rising-stars
 
@@ -55,15 +59,6 @@ My current favourites are:
 But there's so much scope to improve.
 
 footnote:[As the author of Devel::file, I clearly enjoy name games]
-
-== Modules Intro
-
-153 Registered in CPAN, many more unregistered.
-
-I'll quickly cover some broad themes and then look at some
-of the more interesting ones in greater detail.
-
-HDTDT;; "How do they do that?"
 
 == Modules Themes
 
@@ -140,7 +135,7 @@ Used within Moose quite a bit.
 * *Sub::Exporter::GlobExporter* - export shared globs with Sub::Exporter collectors 
 * *Sub::Import* - import routines from most anything using Sub::Exporter
 * *Sub::Exporter::Lexical* - to export lexically-available subs with Sub::Exporter 
-* *Sub::Exporter::Util* - utilities to make Sub::Exporter easier
+* *Sub::Exporter::Util* - utilities to make Sub::Exporter easier +
    `curry_method, curry_chain, merge_col, mixin_installer, like`
 
 * *Sub::Exporter::Simple* - just export some subs
