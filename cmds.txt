@@ -32,6 +32,6 @@ p 'join ", ", map { 0.85*$_ } 297, 210'
 ~/wkhtml/wkhtmltopdf-amd64 --page-width 252mm --page-height 178mm split.slides/s*html slides.pdf
 
 # all in one
-../asciidoc-8.6.3/asciidoc.py --backend slidy slides.txt && ./split-slides.pl slides.html && ~/wkhtml/wkhtmltopdf-amd64 --page-width 252mm --page-height 178mm split.slides/s*html acroread.pdf
+../asciidoc-8.6.3/asciidoc.py --backend slidy slides.txt && ./split-slides.pl slides.html && ~/wkhtml/wkhtmltopdf-amd64 --page-width 252mm --page-height 178mm split.slides/s*html slides.pdf
 
 impressive -B 20 -d 30:00 slides.pdf 
