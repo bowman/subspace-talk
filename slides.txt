@@ -137,7 +137,7 @@ Used within Moose quite a bit.
 * *Sub::Import* - import routines from most anything using Sub::Exporter
 * *Sub::Exporter::Lexical* - to export lexically-available subs with Sub::Exporter 
 * *Sub::Exporter::Util* - utilities to make Sub::Exporter easier
-   curry_method, curry_chain, merge_col, mixin_installer, like
+   `curry_method, curry_chain, merge_col, mixin_installer, like`
 
 * *Sub::Exporter::Simple* - just export some subs
 footnote:[ This is free software, licensed under:
@@ -188,14 +188,15 @@ Sub::Auto - Class::AutoloadCAN Devel::Declare Scope::Guard]
 
 == Tweak Subs Properties
 
-* *Sub::Prototype* - set subs prototype: `set_prototype($code, "&@")`
+* *Sub::Prototype* - set subs prototype: +
+  `set_prototype($code, "&@")`
 * *Sub::Attribute* - reliable subroutine attribute handlers
 * *Sub::StrictDecl* - detect undeclared subroutines in compilation
 * *subs* - pragma to predeclare sub names
 * *subs::auto* - Read barewords as subroutine names.
   footnote:[HDTDT: B; B::Keywords; Variable::Magic]
 * *Sub::Caller* - Add caller information to the end of @_.
-* *Sub::Called* - get information about how the subroutine is called
+* *Sub::Called* - get information about how the subroutine is called +
   `already_called, not_called, called_with_ampersand`
 * *Sub::Quotelike* - Allow to define quotelike functions (q qq)
 
@@ -206,7 +207,7 @@ Sub::Auto - Class::AutoloadCAN Devel::Declare Scope::Guard]
 -----------------------------------------------------
   my sub this { .. }
 -----------------------------------------------------
-footnote:[HDTDT: Attribute::Handlers, namespace::clean]
+footnote:[HDTDT: Filter::Simple]
 
 *Sub::Private* - Truly private subroutines and methods
 [source,perl]
@@ -217,7 +218,7 @@ footnote:[HDTDT: Attribute::Handlers, namespace::clean]
   }
 -----------------------------------------------------
 
-Also *Lexical::Sub* from Zefram
+Also *Lexical::Sub* from Zefram, with seems mor eadvanced.
 
 footnote:[HDTDT: Attribute::Handlers, namespace::clean,
 B::Hooks::EndOfScope]
@@ -230,7 +231,7 @@ B::Hooks::EndOfScope]
 * *Sub::Parameters* - attributes to unpack params declaratively
 * *Sub::ArgShortcut* - simplify functions that use default arguments
 * *Sub::NamedParams* - use named arguments with any sub
-* *Sub::MicroSig* - microsigs for microvalidation of sub arguments
+* *Sub::MicroSig* - microsigs for microvalidation of sub arguments +
   `:Sig() Params::Validate::Micro`
 * *Sub::Methodical* - call methods as functions (and auto grab $self)
   footnote:[HDTDT: B PadWalker Sub::Install Sub::Exporter]
@@ -238,7 +239,7 @@ B::Hooks::EndOfScope]
 == Current Sub and Tail Recursion
 
 * *Sub::Current* - access current code ref with `ROUTINE->()`
-* *Sub::Recursive* - Anonymous memory leak free recursive subroutines
+* *Sub::Recursive* - Anonymous memory leak free recursive subroutines +
   `recursive { $REC->() }`
 * *Sub::Call::Recur* - Self recursive tail call invocation (recur of Clojure)
 * *Sub::Call::Tail* - Tail calls for subroutines and methods (tail like goto)
@@ -349,7 +350,7 @@ such as Moose.
 * PadWalker
 * Devel::Peek
 
-== Sub Information - Sub::Information Output
+== ... - Sub::Information Output
 
 -----------------------------------------------------
 name = inspect
@@ -370,8 +371,6 @@ dump = SV = RV(0x1323d98) at 0x1323d88
   RV = 0x13836c8
   SV = PVCV(0x1401100) at 0x13836c8
     REFCNT = 3
-    FLAGS = ()
-    COMP_STASH = 0x132f0d8  "Sub::Information"
 -----------------------------------------------------
 
 == Sub Information - Sub::Nary
@@ -391,7 +390,7 @@ footnote:[HDTDT: voodoo]
 
 == Sub Internals
 
-image::images/cv.png["CV",float="right"]
+image::images/cv.png["CV",float="right",height=400]
 [source,c]
 -----------------------------------------------------
 include::snippets/xpvcv.h[]

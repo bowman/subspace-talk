@@ -20,8 +20,18 @@ for f in *.*; do echo mogrify -resize '320x320\>' $f ; done
 ../asciidoc-8.6.3/asciidoc.py --backend slidy slides.txt 
 
 firefox's print to pdf w/ custom size 1, unicode
-impressive -B 39 -d 30:00 slides.pdf 
 ../asciidoc-8.6.3/a2x.py --format chunked   slides.txt 
 
 ../asciidoc-8.6.3/a2x.py --format chunked -v -k --xsltproc-opts='--stringparam suppress.navigation 1' slides.txt 
 ~/wkhtml/wkhtmltopdf-amd64 slides.chunked/a*html wk.pdf
+~/wkhtml/wkhtmltopdf-amd64 split.slides/s*html wk.pdf
+p 'join ", ", map { 0.85*$_ } 297, 210'
+
+../asciidoc-8.6.3/asciidoc.py --backend slidy slides.txt 
+./split-slides.pl slides.html 
+~/wkhtml/wkhtmltopdf-amd64 --page-width 252mm --page-height 178mm split.slides/s*html slides.pdf
+
+# all in one
+../asciidoc-8.6.3/asciidoc.py --backend slidy slides.txt && ./split-slides.pl slides.html && ~/wkhtml/wkhtmltopdf-amd64 --page-width 252mm --page-height 178mm split.slides/s*html acroread.pdf
+
+impressive -B 20 -d 30:00 slides.pdf 

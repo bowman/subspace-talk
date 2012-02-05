@@ -16,5 +16,4 @@ struct xpvcv {
   CV *        xcv_outside;
   U32         xcv_outside_seq;
   cv_flags_t  xcv_flags
-  I32 xcv_depth;
-};
+  I32 xcv_depth; };
