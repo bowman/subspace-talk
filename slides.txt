@@ -122,8 +122,7 @@ Sub::Exporter - a sophisticated exporter for custom-built routines
 -----------------------------------------------------
 include::snippets/sub-exporter/From.pm[]
 include::snippets/sub-exporter.pl[]
------------------------------------------------------
------------------------------------------------------
+# OUTPUT
 sys::[perl -M5.10.0 -Isnippets/sub-exporter snippets/sub-exporter.pl]
 -----------------------------------------------------
 
