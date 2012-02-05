@@ -127,7 +127,9 @@ include::snippets/sub-exporter.pl[]
 sys::[perl -M5.10.0 -Isnippets/sub-exporter snippets/sub-exporter.pl]
 -----------------------------------------------------
 
-Used within Moose quite a bit.
+Groups, defaults, aliases, prefixes, generated and custom imports...
+Using it in you module gives your users all these options.
+Used within Moose.
 
 == Exports and Imports - Sub::Exporter::*
 
