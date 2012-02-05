@@ -218,7 +218,7 @@ footnote:[HDTDT: Filter::Simple]
   }
 -----------------------------------------------------
 
-Also *Lexical::Sub* from Zefram, with seems mor eadvanced.
+Also *Lexical::Sub* from Zefram, with seems more advanced.
 
 footnote:[HDTDT: Attribute::Handlers, namespace::clean,
 B::Hooks::EndOfScope]
@@ -454,7 +454,7 @@ by custom opcodes.  This has two main advantages :
 Subroutine calls with and without parenthesis are handled. [..]
 
 When B and B::Deparse are loaded, they get automatically
-monkeypatched so that introspecting modules like B::Concise and
+monkey-patched so that introspecting modules like B::Concise and
 B::Deparse still produce a valid output.
 
 == Unused Sub::Names ==
