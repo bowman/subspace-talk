@@ -1,7 +1,6 @@
 footnote styles
 
-spell check
-
-github publish
+git push -u origin master
+github gh-pages publish
 
 final example

@@ -479,8 +479,8 @@ URL: https://github.com/bowman/subspace-talk
 
 Tiny URL: http://tinyurl.com/subspace-talk
 
-http://search.cpan.org/search?mode=module&query=Sub
-http://cpansearch.perl.org/src/GAAS/illguts-0.09/index.html#cv
-http://cpansearch.perl.org/src/GAAS/illguts-0.09/op.html
+* http://search.cpan.org/search?mode=module&query=Sub
+* http://cpansearch.perl.org/src/GAAS/illguts-0.09/index.html#cv
+* http://cpansearch.perl.org/src/GAAS/illguts-0.09/op.html
 
 // vim:tw=68:ts=2:sts=2:sw=2:syntax=asciidoc:
