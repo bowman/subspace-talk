@@ -125,7 +125,7 @@ Sub::Exporter - a sophisticated exporter for custom-built routines
 
 [source,perl]
 -----------------------------------------------------
-XXX XXX
+XXX
 -----------------------------------------------------
 
 Used within Moose quite a bit.
